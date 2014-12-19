@@ -1,7 +1,7 @@
 #This file contains the ball class which will hold the data on the ball in pong
 import os, pygame
 from math import *
-MAX_SPEED = 2
+MAX_SPEED = 5
 class BallSprite(pygame.sprite.Sprite):
     ''' Is the ball in a game of Pong '''
     # GRAVITY = -0.5
