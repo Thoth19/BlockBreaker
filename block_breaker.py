@@ -4,7 +4,7 @@ from paddle import*
 from ball import*
 score = 0 
 lives  = 2
-level = 25
+level = 0
 
 # plan is to allow three instances of balls going off of the board. if a board is cleared 
 # the player will get an extra life, and be moved to a new board. That can take place via command lines
