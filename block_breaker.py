@@ -59,7 +59,7 @@ while lives > 0:
         non_ball_sprites_group.add(block2)
         non_ball_sprites_group.add(block3)
     done = False #done with this game board
-    while not(done):
+    while not(done) and lives >0:
         clock.tick(30)
         screen.fill((255,0,0))
         all_sprites_group.update()
@@ -102,6 +102,10 @@ while lives > 0:
                                 all_sprites_group.remove(p)
                                 non_ball_sprites_group.remove(p)
                                 block_group.remove(p)
+                                if random.randint(0,level) == 0:
+                                    ball = BallSprite((400,320),(random.randint(-3,3),random.randint(1,3)))
+                                    ball_group.add(ball)
+                                    all_sprites_group.add(ball)
                             b.velocity = b.velocity[0]+1,b.velocity[1]
                             
                     if b.velocity[1] != 0:
@@ -116,8 +120,10 @@ while lives > 0:
                                 block_group.remove(p)
                             b.velocity = b.velocity[0],b.velocity[1]+1
                             
-                if b.velocity ==(0,0):
-                    b.velocity = 0,1
+                if b.velocity[0] ==0:
+                    b.velocity = random.randint(1,3),b.velocity[1]
+                if b.velocity[1] ==0:
+                    b.velocity = b.velocity[0],random.randint(1,3)
             #print b.rect.x, b.rect.y
 
         if len(block_group) == 0:
@@ -127,9 +133,10 @@ while lives > 0:
         all_sprites_group.draw(screen)
         pygame.display.flip()
     pygame.display.quit()
-    print "Good Job! You beat stage %d." %level
-    print "Your score is %d" %score
-    print "You still have %d lives left. Plues you get a free one for beating the level" %lives
-    x = raw_input("Enter anything to continue: ")
+    if lives >0:
+        print "Good Job! You beat stage %d." %level
+        print "Your score is %d" %score
+        print "You still have %d lives left. Plues you get a free one for beating the level" %lives
+        x = raw_input("Enter anything to continue: ")
 print "Well you finally lost with a final score of %d" %score
 print "And you made it to level %d" %level
