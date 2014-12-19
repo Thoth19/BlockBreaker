@@ -4,12 +4,13 @@ class PaddleSprite(pygame.sprite.Sprite):
     '''
     This is the user controlled paddle in a game of Pong
     '''
-    def __init__(self, position):
+    def __init__(self, position, orient):
         pygame.sprite.Sprite.__init__(self)
         self.image = pygame.Surface([128,16])
         self.rect = self.image.get_rect()
         self.rect.x=position[0]
         self.rect.y=position[1]
+        self.orient = orient
     def move(self, position):
         ''' moves to given position'''
         if position[0] + 128 > X_MAX:
